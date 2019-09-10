@@ -1,0 +1,22 @@
+{
+    "name": "mb/app",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Bogdan Nikic",
+            "email": "bogdan.nikic.14@singimail.rs"
+        },
+        {
+            "name": "Milos Malesevic",
+            "email": "milos.malesevic.14@singimail.rs"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\" : ""
+        }
+    }
+}

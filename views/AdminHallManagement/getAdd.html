@@ -1,0 +1,41 @@
+{% extends "_global/index.html" %}
+
+{% block main %}
+<div>
+    EDIT A HALL
+    <div class="options">
+        <a href="{{ BASE }}administrator/halls">List all Halls</a>
+    </div>
+
+    <form class="halls-form" method="POST">
+        <div>
+            <label for="name">Name: </label>
+            <input type="text" id="name" name="name" required>
+            <label for="description">Description: </label>
+            <input type="text" id="description" name="description" required><br>
+            <label for="seats">Seats: </label>
+            <input type="text" id="seats" name="seats" required><br>
+            <label for="type">Type: </label>
+            <input type="text" id="type" name="type" required><br>
+            <label for="wifi">Wifi: </label>
+            <input type="checkbox" id="wifi" name="wifi"><br>
+            <label for="rostrum">Rostrum: </label>
+            <input type="checkbox" id="rostrum" name="rostrum"><br>
+            <label for="surroundSound">Surround Sound: </label>
+            <input type="checkbox" id="surroundSound" name="surroundSound"><br>
+            <label for="projector">Projector: </label>
+            <input type="checkbox" id="projector" name="projector">
+        </div> 
+        
+        <div><br>
+            <button type="submit">
+                Add Hall
+            </button>
+        </div>
+    </form>
+        
+</div>
+
+ 
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "_global/index.html" %}
+
+{% block main %}
+<div>
+    WELCOME TO THE DASHBOARD, ADMINISTRATOR
+    <div class="options">
+        <a href="{{ BASE }}administrator/halls/add">Add a new Hall</a><br><br>
+    </div>
+
+    <div class="halls">
+        <ul>
+            Edit existing Halls:
+            {% for hall in halls %}
+            <li>
+                <a href="{{ BASE }}administrator/halls/edit/{{ hall.hall_id }}">
+                    {{ hall.name|escape }}
+                </a>
+            
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+ 
+
+{% endblock %}

@@ -1,0 +1,4 @@
+twig-cache/
+vendor/
+sessions/
+assets/libs/
