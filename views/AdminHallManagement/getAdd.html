@@ -1,41 +1,59 @@
 {% extends "_global/index.html" %}
 
 {% block main %}
-<div>
-    EDIT A HALL
-    <div class="options">
-        <a href="{{ BASE }}administrator/halls">List all Halls</a>
-    </div>
 
-    <form class="halls-form" method="POST">
-        <div>
-            <label for="name">Name: </label>
-            <input type="text" id="name" name="name" required>
-            <label for="description">Description: </label>
-            <input type="text" id="description" name="description" required><br>
-            <label for="seats">Seats: </label>
-            <input type="text" id="seats" name="seats" required><br>
-            <label for="type">Type: </label>
-            <input type="text" id="type" name="type" required><br>
-            <label for="wifi">Wifi: </label>
-            <input type="checkbox" id="wifi" name="wifi"><br>
-            <label for="rostrum">Rostrum: </label>
-            <input type="checkbox" id="rostrum" name="rostrum"><br>
-            <label for="surroundSound">Surround Sound: </label>
-            <input type="checkbox" id="surroundSound" name="surroundSound"><br>
-            <label for="projector">Projector: </label>
-            <input type="checkbox" id="projector" name="projector">
-        </div> 
-        
-        <div><br>
-            <button type="submit">
-                Add Hall
-            </button>
+<form class="halls-form col-12 col-sm-10 col-md-8 col-lg-6 col-xl-6" method="POST">
+        <div class="card">
+            <div class="card-header">
+                    Add a Hall
+            </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required class="form-control" required>
         </div>
-    </form>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required class="form-control" required>
+        </div>
+        <div class="form-group">
+                <label for="seats">Seats:</label>
+                <input type="text" id="seats" name="seats" required class="form-control" required>
+        </div>
+        <div class="form-group">
+                <label for="type">Type:</label>
+                <input type="text" id="type" name="type" required class="form-control" required>
+        </div>
+        <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="wifi" name="wifi">
+                <label class="custom-control-label" for="wifi">Wifi</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="rostrum" name="rostrum">
+                <label class="custom-control-label" for="rostrum">Rostrum</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="surroundSound" name="surroundSound">
+                <label class="custom-control-label" for="surroundSound">Surround Sound</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="projector" name="projector">
+                <label class="custom-control-label" for="projector">Projector</label>
+        </div>
+    </div>
         
-</div>
-
- 
+                
+        <div class="card-footer">
+                <button type="submit" class="btn btn-primary">
+                    Add Hall
+                </button>
+            </div> 
+        
+            <div class="back text-center">
+                    <a href="{{ BASE }}administrator/halls">Back to Profile screen</a>
+            </div> 
+                   
+        </div>
+    </form> 
 
 {% endblock %}

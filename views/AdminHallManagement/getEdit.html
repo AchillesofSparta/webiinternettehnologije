@@ -1,29 +1,30 @@
 {% extends "_global/index.html" %}
 
 {% block main %}
-<div>
-    EDIT A HALL
-    <div class="options">
-        <a href="{{ BASE }}administrator/halls">List all Halls</a>
+<form class="halls-form col-12 col-sm-10 col-md-8 col-lg-6 col-xl-6" method="POST">
+    <div class="card">
+            <div class="card-header">
+                    Edit a Hall
+            </div>
+            <div class="card-body">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required class="form-control" value="{{ hall.name|escape }}">
     </div>
-
-    <form class="halls-form" method="POST">
-        <div>
-            <label for="name">Name: </label>
-            <input type="text" id="name" name="name" value="{{ hall.name|escape }}">
-            <label for="description">Description: </label>
-            <input type="text" id="description" name="description" value="{{ hall.description|escape }}">
-        </div> 
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required class="form-control" value="{{ hall.description|escape }}">
+    </div>
+    </div>
+        <div class="card-footer">
+                <button type="submit" class="btn btn-primary">
+                    Edit Hall
+                </button>
+            </div> 
         
-        <div>
-            <button type="submit">
-                Edit Hall
-            </button>
-        </div>
-    </form>
-        
-</div>
-
- 
-
+            <div class="back text-center">
+                    <a href="{{ BASE }}administrator/halls">Back to Profile screen</a>
+            </div> 
+    </div>
+</form>
 {% endblock %}
