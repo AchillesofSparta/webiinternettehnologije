@@ -69,8 +69,23 @@
             */
         }
 
-        
+        private function normaliseKeywords(string $keywords): string {
+            $keywords = trim($keywords);
+            $keywords = preg_replace("/ +/"," ", $keywords);
+            return $keywords;
+        }
 
+        
+        public function postSearch() {
+            $hallModel = new HallModel($this->getDatabaseConnection());
+
+            $query = filter_input(INPUT_POST, "query", FILTER_SANITIZE_STRING);
+            $keywords = $this->normaliseKeywords($query);
+
+            $halls = $hallModel->getAllBySearch($keywords);
+
+            $this->set("halls", $halls);
+        }
 
         public function delete($id) {
             die("TO DO YET");   

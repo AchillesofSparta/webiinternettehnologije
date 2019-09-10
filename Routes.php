@@ -6,7 +6,7 @@
         # Pages
         App\Core\Route::get("|^contact/?$|",                                     "Main",                    "contact"),
         App\Core\Route::get("|^aboutUs/?$|",                                     "Main",                    "aboutUs"),
-
+        App\Core\Route::post("|^search/?$|",                                     "Hall",                    "postSearch"),
 
         # Admininstrator registration (extra)
         App\Core\Route::get("|^administrator/register/?$|",                      "AdminDashboard",          "getRegister"),

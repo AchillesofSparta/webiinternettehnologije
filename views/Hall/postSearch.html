@@ -1,0 +1,20 @@
+{% extends "_global/index.html" %}
+
+{% block main %}
+{% spaceless %}
+
+{% for hall in halls %}
+<div class="row">
+    <div class="card mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+            <img href="{{ BASE }}hall/{{ hall.hall_id }}" src="#" alt="IMAGE" class="card-img-top" alt="IMAGE">
+            <div class="card-body">
+              <h5 class="card-title"><a href="{{ BASE }}hall/{{ hall.hall_id }}" class=" hall">{{ hall.name|escape|title }}</a></h5>
+              <p class="card-text"> {{ hall.description }} </p>
+            </div>
+          </div>                    
+</div>
+{% endfor %}
+
+{% endspaceless %}
+Search results
+{% endblock %}

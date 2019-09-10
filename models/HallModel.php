@@ -42,6 +42,25 @@
             return $hall;
         }
 
+        public function getAllBySearch(string $keywords) {
+            # Direct input search (search button on the main page)
+            $sql = "SELECT * FROM hall WHERE name LIKE ? OR description LIKE ?;";
+
+            $keywords = "%" . $keywords . "%";
+
+            $prep = $this->getConnection()->prepare($sql);
+            if(!$prep){
+                return [];
+            }
+            
+            $res = $prep->execute([$keywords, $keywords]);
+            if(!$res){
+                return [];
+            }
+
+            return $prep->fetchAll(\PDO::FETCH_OBJ);
+        }
+
         public function getAll(): array {
             $sql = "SELECT * FROM hall;";
             $prep = $this->getConnection()->prepare($sql);
