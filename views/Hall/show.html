@@ -1,32 +1,30 @@
 {% extends "_global/index.html" %}
 
 {% block main %}
-<div class=hall-title>
-        {{ hall.name|escape }}
-</div>
 
-<img src="#" alt="Prva slika" class="hall-image-1">
-<img src="#" alt="Druga slika" class="hall-image-2">
-<img src="#" alt="Treca slika" class="hall-image-3">
-
-<div class=hall-description>
-        {{ hall.description|escape }}
-</div>
-    <ul class=features-list>
-        <div class=features-title>
-                Features:
+    <div class="card mb-3">
+            <img src="..." class="card-img-top" alt="IMAGE">
+            <div class="card-body">
+            <h5 class="card-title">{{ hall.name|escape }}</h5>
+            <p class="card-text">{{ hall.description|escape }}</p><br>
+            <p class="card-text">Features of the hall: </p>
+            </div>
+            <ul class="list-group list-group-flush">
+                    {% for i in 0..features|length-1 %}
+                    <li class="list-group-item">                
+                        {% if hallFeatures[i].value is not null %}              
+                            <p>{{ hallFeatureNames[i].name }}: {{ hallFeatures[i].value }}</p>
+                        {% else %}
+                            <p>{{ hallFeatureNames[i].name }}</p>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                
+            </ul>
+            <div class="card-body">
+            <a href="{{ BASE }}" class="card-link">Back to all Halls</a>
+            </div>
         </div>
-        {% for i in 0..features|length-1 %}
-            <li class="hall-show">                
-                {% if hallFeatures[i].value is not null %}              
-                    <p>{{ hallFeatureNames[i].name }}: {{ hallFeatures[i].value }}</p>
-                {% else %}
-                    <p>{{ hallFeatureNames[i].name }}</p>
-                {% endif %}
-        {% endfor %} 
-    </ul>
-    
-    
     
 {% endblock %}
 
