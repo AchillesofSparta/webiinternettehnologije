@@ -51,6 +51,11 @@
 
         }
 
+        public function getLogout() {
+            $this->getSession()->remove("user_id");
+            $this->getSession()->save();
+            $this->redirect(\Configuration::BASE);
+        }
         
 
         public function postLogin(){

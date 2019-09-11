@@ -16,6 +16,9 @@
         App\Core\Route::get("|^administrator/login/?$|",                         "Main",                    "getLogin"),
         App\Core\Route::post("|^administrator/login/?$|",                        "Main",                    "postLogin"),
 
+        # Administrator logout
+        App\Core\Route::get("|^administrator/logout/?$|",                        "Main",                    "getLogout"),
+
         # User role route
         App\Core\Route::get("|^administrator/halls/?$|",                         "AdminHallManagement",     "halls"),
         App\Core\Route::get("|^administrator/halls/edit/([0-9]+)/?$|",           "AdminHallManagement",     "getEdit"),
