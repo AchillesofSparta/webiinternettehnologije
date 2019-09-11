@@ -25,6 +25,8 @@
         App\Core\Route::post("|^administrator/halls/edit/([0-9]+)/?$|",          "AdminHallManagement",     "postEdit"),
         App\Core\Route::get("|^administrator/halls/add/?$|",                     "AdminHallManagement",     "getAdd"),
         App\Core\Route::post("|^administrator/halls/add/?$|",                    "AdminHallManagement",     "postAdd"),
+        App\Core\Route::get("|^administrator/halls/reserve/?$|",                 "AdminHallManagement",     "getReserve"),
+        App\Core\Route::post("|^administrator/halls/reserve/?$|",                "AdminHallManagement",     "postReserve"),
 
         #API routes
         App\Core\Route::get("|^api/hall/([0-9]+)/?$|",                           "ApiHall",                 "show"),

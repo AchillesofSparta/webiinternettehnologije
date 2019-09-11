@@ -21,10 +21,28 @@
                 {% endfor %}
                 
             </ul>
-            <div class="card-body">
-            <a href="{{ BASE }}" class="card-link">Back to all Halls</a>
+            <div class="row">
+                <div class="col-sm-6 text-center">
+                    <br><br><br>
+                    <a href="{{ BASE }}" class="card-link">Back to all Halls</a>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="date">Check this Hall availability by selecting a date:</label>
+                                <input type="date" id="date" name="date" class="form-control">             
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">
+                                    Check
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+    </div>
     
 {% endblock %}
 

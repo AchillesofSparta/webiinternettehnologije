@@ -5,6 +5,7 @@
     use App\Models\HallModel;
     use App\Models\FeatureModel;
     use App\Models\HallFeatureModel;
+    use App\Models\EventModel;
 
     class AdminHallManagementController extends \App\Core\Role\UserRoleController {
         public function halls() {
@@ -176,6 +177,49 @@
                 $this->set("message","Error: " . implode(", ", $file->getErrors()));
                 return false;
             }
+        }
+
+        public function getReserve() {
+            $hallModel = new HallModel($this->getDatabaseConnection());
+            $halls = $hallModel->getAll();
+            $this->set("halls", $halls);
+
+            // Required to read event_type table so this can be dynamic too
+            $eventModel = new EventModel($this->getDatabaseConnection());
+            $eventTypes = $eventModel->getAllEventTypes();
+            $this->set("eventTypes",$eventTypes);
+            
+        }
+
+        public function postReserve() {
+            $hallId = filter_input(INPUT_POST, "hall_name", FILTER_SANITIZE_STRING);
+            $eventType = filter_input(INPUT_POST, "event_type", FILTER_SANITIZE_STRING);
+            $eventName = filter_input(INPUT_POST, "event_name", FILTER_SANITIZE_STRING);
+            $eventDate = filter_input(INPUT_POST, "event_date", FILTER_SANITIZE_STRING);
+
+            echo "Hall name: {$hallId},";
+            echo "Event type: {$eventType},";
+            echo "Evenet name: {$eventName},";
+            echo "Date: {$eventDate}";
+
+            // Not important, can be modified later to be dynamic
+            $adminId = 1;
+            
+            $eventModel = new EventModel($this->getDatabaseConnection());
+            $newEvent = $eventModel->add([
+                "hall_id"           => $hallId,
+                "type_id"           => $eventType,
+                "administrator_id"  => $adminId,
+                "date"              => $eventDate,
+                "name"              => $eventName
+            ], "event");
+
+            if($newEvent) {
+                $this->redirect(\Configuration::BASE . "administrator/halls");
+            }
+
+            $this->set("message", "Error. Failed adding a new Event...");
+            
         }
 
 
