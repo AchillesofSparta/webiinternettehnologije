@@ -87,7 +87,7 @@
 
                 # Add selected features one by one (seats and type are mandatory, others are optional)
                 $hallFeatureModel = new hallFeatureModel($this->getDatabaseConnection());
-                echo "ABOUT TO MAKE SEATS";
+                
                 # MANDATORY
                 # ADD SEATS
                 $hallFeatureModelId = $hallFeatureModel->add([
@@ -96,7 +96,7 @@
                     "value"         => $seats
                 ], "hall_feature");
 
-                echo "ABOUT TO MAKE TYPE";
+                
                 # ADD TYPE
                 $hallFeatureModelId = $hallFeatureModel->add([
                     "hall_id"       => $newHallId,

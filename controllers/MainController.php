@@ -104,7 +104,7 @@
             $administratorLoginModel->add(
                 [
                     'ip_address' => $ipAddress,
-                    "administrator_id" => $admin->administrator_id,
+                    "administrator_id" => $admin->administrator_id
                 ], "administrator_login"
             );
             

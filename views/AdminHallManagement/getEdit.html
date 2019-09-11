@@ -9,11 +9,11 @@
             <div class="card-body">
     <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required class="form-control" value="{{ hall.name|escape }}" pattern=".*[^\s]{3,}.*">
+        <input type="text" id="name" name="name" required class="form-control" value="{{ hall.name|escape }}">
     </div>
     <div class="form-group">
         <label for="description">Description:</label>
-        <input type="text" id="description" name="description" required class="form-control" value="{{ hall.description|escape }}" pattern=".*[^\s]{3,}.*">
+        <input type="text" id="description" name="description" required class="form-control" value="{{ hall.description|escape }}">
     </div>
     <div class="form-group">
         <label for="image">Edit the existing image (optional)</label>
@@ -30,5 +30,8 @@
                     <a href="{{ BASE }}administrator/halls">Back to Profile screen</a>
             </div> 
     </div>
+    
 </form>
+
+
 {% endblock %}
