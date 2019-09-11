@@ -150,6 +150,9 @@
 
         // File upload prep
         private function doImageUpload(string $fieldName, string $fileName): bool {
+            # Check and remove if an image already exists first
+            unlink(\Configuration::UPLOAD_DIR . $fileName . ".jpg");
+
             $uploadPath = new \Upload\Storage\FileSystem(\Configuration::UPLOAD_DIR);
             
             # Prep the file
