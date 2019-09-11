@@ -42,11 +42,15 @@
                 "description" => $description
             ],"hall");
 
-            $uploadStatus = $this->doImageUpload("image", $hallId);
-            if(!$uploadStatus){
-                $this->set("message", "Hall has been edited but an image has not been uploaded...");
-                return;
+            # Proveri da li je slika uopste prosledjena u formularu
+            if(isset($_FILES["image"]) && $_FILES["image"]["error"] == 0){
+                $uploadStatus = $this->doImageUpload("image", $hallId);
+                    if(!$uploadStatus){
+                        $this->set("message", "Hall has been edited but an image has not been uploaded...");
+                        return;
+                    }
             }
+            
 
             $this->redirect(\Configuration::BASE . "administrator/halls");
         }
