@@ -96,6 +96,19 @@
             $this->getSession()->put("user_id", $admin->administrator_id);
             $this->getSession()->save();
 
+            
+            # Log admin login
+            $administratorLoginModel = new AdministratorLoginModel($this->getDatabaseConnection());
+            $ipAddress = filter_input(INPUT_SERVER, "REMOTE_ADDR");
+            
+            $administratorLoginModel->add(
+                [
+                    'ip_address' => $ipAddress,
+                    "administrator_id" => $admin->administrator_id,
+                ], "administrator_login"
+            );
+            
+
             $this->redirect(\Configuration::BASE .  "administrator/halls");
 
         }

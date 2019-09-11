@@ -7,13 +7,14 @@
     use App\Validators\StringValidator;
     use App\Validators\DateTimeValidator;
     use App\Validators\BitValidator;
+    use App\Validators\IpAddressValidator;
     use \PDO;
 
     class AdministratorLoginModel extends Model {
         protected function getFields(): array {
             return [
-                "administrator_id" => new Field((new NumberValidator())->setIntegerLength(11), false),
-                "ip_address" => Field::editableIpAddress()
+                "administrator_id" => new Field((new NumberValidator())->setIntegerLength(11), true),
+                "ip_address" => new Field((new IpAddressValidator()))
             ];
         }
 
