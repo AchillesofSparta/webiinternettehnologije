@@ -2,7 +2,7 @@
 
 {% block main %}
 
-<form class="halls-form col-12 col-sm-10 col-md-8 col-lg-6 col-xl-6" method="POST">
+<form class="halls-form col-12 col-sm-10 col-md-8 col-lg-6 col-xl-6" method="POST" enctype="multipart/form-data">
         <div class="card">
             <div class="card-header">
                     Add a Hall
@@ -10,19 +10,19 @@
     <div class="card-body">
         <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required class="form-control" required>
+            <input type="text" id="name" name="name" class="form-control" required>
         </div>
         <div class="form-group">
             <label for="description">Description:</label>
-            <input type="text" id="description" name="description" required class="form-control" required>
+            <input type="text" id="description" name="description" class="form-control" required>
         </div>
         <div class="form-group">
                 <label for="seats">Seats:</label>
-                <input type="text" id="seats" name="seats" required class="form-control" required>
+                <input type="text" id="seats" name="seats" class="form-control" required>
         </div>
         <div class="form-group">
                 <label for="type">Type:</label>
-                <input type="text" id="type" name="type" required class="form-control" required>
+                <input type="text" id="type" name="type" class="form-control" required>
         </div>
         <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="wifi" name="wifi">
@@ -39,6 +39,10 @@
         <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="projector" name="projector">
                 <label class="custom-control-label" for="projector">Projector</label>
+        </div><br>
+        <div class="form-group">
+                <label for="image">Upload an image</label>
+                <input type="file" id="image" name="image" required class="form-control" accept="image/jpeg">
         </div>
     </div>
         

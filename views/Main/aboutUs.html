@@ -2,8 +2,33 @@
 
 {% block main %}
 
-<div>
-    <p>EXAMPLE ABOUT US</p>
-</div>
+<div class="card-group">
+        <div class="card">
+          <img src="{{ BASE }}assets/img/males.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">One Master</h5>
+            <p class="card-text">A Jedi master trained and raised in Vinca, taught by the great Vincan Fish People.
+                As you can see in the picture, he greatly admires art.
+            </p>
+            <p class="card-text"><small class="text-muted">Soon to be married!</small></p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="{{ BASE }}assets/img/singidunum.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">One Academy</h5>
+            <p class="card-text">Thank you, Singi!</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="{{ BASE }}assets/img/bogi.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">One Padawan</h5>
+            <p class="card-text">Random dude who likes cats but doesn't like to feed them. Trying to graduate
+                and then wait for the Rise of the Skywalker.</p>
+            <p class="card-text"><small class="text-muted">Soon to graduate!</small></p>
+          </div>
+        </div>
+      </div>
 
 {% endblock %}

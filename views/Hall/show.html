@@ -3,7 +3,7 @@
 {% block main %}
 
     <div class="card mb-3">
-            <img src="..." class="card-img-top" alt="IMAGE">
+            <img src="{{ BASE }}assets/uploads/{{ hall.hall_id }}.jpg" class="card-img-top" alt="IMAGE">
             <div class="card-body">
             <h5 class="card-title">{{ hall.name|escape }}</h5>
             <p class="card-text">{{ hall.description|escape }}</p><br>

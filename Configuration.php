@@ -14,6 +14,8 @@
         const FINGERPRINT_PROVIDER_FACTORY = "\\App\\Core\\Fingerprint\\BasicFingerprintProviderFactory";
         const FINGERPRINT_PROVIDER_METHOD = "getInstance";
         const FINGERPRINT_PROVIDER_ARGS = [ "SERVER" ];
+
+        const UPLOAD_DIR = "assets/uploads/";
     }
     
     

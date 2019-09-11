@@ -42,6 +42,12 @@
                 "description" => $description
             ],"hall");
 
+            $uploadStatus = $this->doImageUpload("image", $hallId);
+            if(!$uploadStatus){
+                $this->set("message", "Hall has been edited but an image has not been uploaded...");
+                return;
+            }
+
             $this->redirect(\Configuration::BASE . "administrator/halls");
         }
 
@@ -128,6 +134,12 @@
                     ], "hall_feature");
                 }
 
+                $uploadStatus = $this->doImageUpload("image", $hallId);
+                if(!$uploadStatus){
+                    $this->set("message", "Hall has been added but an image has not been uploaded...");
+                    return;
+                }
+
                 $this->redirect(\Configuration::BASE . "administrator/halls");
             }
 
@@ -135,4 +147,30 @@
 
             
         }
+
+        // File upload prep
+        private function doImageUpload(string $fieldName, string $fileName): bool {
+            $uploadPath = new \Upload\Storage\FileSystem(\Configuration::UPLOAD_DIR);
+            
+            # Prep the file
+            $file = new \Upload\File($fieldName, $uploadPath);
+            $file->setName($fileName);
+            
+            /*
+            $file->addValidations([
+                new \Upload\Validation\Mimetype("image/jpeg"),
+                new \Upload\Validation\Size("20m")
+            ]);*/
+
+            try {
+                $file->upload();
+                return true;
+            } catch (Exception $e) {
+                $this->set("message","Error: " . implode(", ", $file->getErrors()));
+                return false;
+            }
+        }
+
+
+
     }

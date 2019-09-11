@@ -2,3 +2,4 @@ twig-cache/
 vendor/
 sessions/
 assets/libs/
+assets/uploads/
