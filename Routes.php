@@ -7,6 +7,8 @@
         App\Core\Route::get("|^contact/?$|",                                     "Main",                    "contact"),
         App\Core\Route::get("|^aboutUs/?$|",                                     "Main",                    "aboutUs"),
         App\Core\Route::post("|^search/?$|",                                     "Hall",                    "postSearch"),
+        App\Core\Route::get("|^halls/availability/positive/?$|",                  "Hall",                    "displayAvailability"),
+        App\Core\Route::get("|^halls/availability/negative/?$|",                  "Hall",                    "displayUnavailability"),
 
         # Admininstrator registration (extra)
         App\Core\Route::get("|^administrator/register/?$|",                      "AdminDashboard",          "getRegister"),
@@ -27,6 +29,11 @@
         App\Core\Route::post("|^administrator/halls/add/?$|",                    "AdminHallManagement",     "postAdd"),
         App\Core\Route::get("|^administrator/halls/reserve/?$|",                 "AdminHallManagement",     "getReserve"),
         App\Core\Route::post("|^administrator/halls/reserve/?$|",                "AdminHallManagement",     "postReserve"),
+
+        # Availability
+        App\Core\Route::get("|^halls/availability/?$|",                          "Hall",                    "getAvailability"),
+        App\Core\Route::post("|^halls/availability/?$|",                         "Hall",                    "postAvailability"),
+
 
         #API routes
         App\Core\Route::get("|^api/hall/([0-9]+)/?$|",                           "ApiHall",                 "show"),

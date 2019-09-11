@@ -6,6 +6,7 @@
     use App\Models\HallModel;
     use App\Models\FeatureModel;
     use App\Models\AdministratorLoginModel;
+    use App\Models\EventModel;
     use App\Core\Model;
 
     class HallController extends \App\Core\Controller {
@@ -51,8 +52,30 @@
             $this->set("features", $mixedArray);
             #print_r($mixedArray[0][0]);
 
+            /*
+            // Check Hall availability - OLD
+            if (isset($_POST['submit'])) {
+                echo ("IN THERE");
+                $checkDate = filter_input(INPUT_GET, "date", FILTER_SANITIZE_STRING);
+                $eventModel = new EventModel($this->getDatabaseConnection());
+
+                $resultCheck = false;
+                if($eventModel->getByDate($checkDate)){
+                    $resultCheck = true;
+                }
+
+                if($resultCheck){
+                    $this->set("message","Hall unavailable for the selected date...");
+                }
+
+                $this->set("message","HALL AVAILABLE! Please call us to reserve the hall!");
+
+            }
+            */
+            
+            // OLD CODE
             # popunjavanje zbog zapisivanja koda
-            $administratorLoginModel = new AdministratorLoginModel($this->getDatabaseConnection());
+            //$administratorLoginModel = new AdministratorLoginModel($this->getDatabaseConnection());
             
             /* UPIS I MENJANJE U BAZI
             $ipAddress = filter_input(INPUT_SERVER, "REMOTE_ADDR");
@@ -90,5 +113,37 @@
         public function delete($id) {
             die("TO DO YET");   
         }
+
+        /*
+        public function displayAvailability(string $mgs){
+            $this->set("message", $mgs);
+            $this->redirect(\Configuration::BASE . "halls/availability/display");
+        }
+        */
+
+        public function displayAvailability() {}
+        public function displayUnavailability() {}
+
+        public function getAvailability() {
+            $hallModel = new HallModel($this->getDatabaseConnection());
+            $halls = $hallModel->getAll();
+            $this->set("halls", $halls);
+        }
+
+        public function postAvailability() {
+            $hallId = filter_input(INPUT_POST, "hall_name", FILTER_SANITIZE_STRING);
+            $checkDate = filter_input(INPUT_POST, "check_date", FILTER_SANITIZE_STRING);
+
+            $eventModel = new EventModel($this->getDatabaseConnection());
+
+            if($eventModel->getByDateAndHallId($checkDate, $hallId)){
+                $this->redirect(\Configuration::BASE . "halls/availability/negative");
+                return;
+            }
+            
+            $this->redirect(\Configuration::BASE . "halls/availability/positive");
+        }
+
+        
 
     }

@@ -197,10 +197,12 @@
             $eventName = filter_input(INPUT_POST, "event_name", FILTER_SANITIZE_STRING);
             $eventDate = filter_input(INPUT_POST, "event_date", FILTER_SANITIZE_STRING);
 
+            /*
             echo "Hall name: {$hallId},";
             echo "Event type: {$eventType},";
             echo "Evenet name: {$eventName},";
             echo "Date: {$eventDate}";
+            */
 
             // Not important, can be modified later to be dynamic
             $adminId = 1;

@@ -58,6 +58,18 @@
             return $featureName;
         }
 
+        public function getByDateAndHallId(string $date, int $hallId){
+            $sql = "SELECT * FROM event WHERE date = ? AND hall_id = ?;";
+            $prep2 = $this->getConnection()->prepare($sql);
+            $res2 = $prep2->execute([$date, $hallId]);
+            $featureName = NULL;
+            if($res2){
+                $featureName = $prep2->fetch(PDO::FETCH_OBJ);
+            }
+
+            return $featureName;
+        }
+
         // Read only event_type table
         public function getAllEventTypes(){
             $sqlFeatureId = "SELECT * FROM event_type";
